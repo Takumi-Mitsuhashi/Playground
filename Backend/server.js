@@ -8,21 +8,32 @@ dotenv.config();
 
 const app = express();
 
+const PORT = process.env.PORT || 5000;
+
 app.use(cors({
-    origin: "https://playground-rho-green.vercel.app/"
+    
+    origin: [
+        "http://localhost:5173",
+        "https://playground-rho-green.vercel.app"
+    ],
+    credentials: true,
 }));
 
 app.use(express.json());
 
 app.use("/memos", memoRoutes);
 
+app.get("/", (req, res) => {
+  res.send("API running");
+});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
 
-    app.listen(process.env.PORT, () => {
-      console.log(`Server running on port ${process.env.PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((error) => {

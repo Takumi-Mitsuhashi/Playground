@@ -392,8 +392,9 @@ export default function InputArea() {
     // MongDBに保存
     const handleSubmit = async () => {
       try {
+        console.log(import.meta.env.VITE_API_URL);
         const response = await fetch(
-          "http://localhost:5000/memos",
+          `${import.meta.env.VITE_API_URL}/memos`,
           {
             method: "POST",
             headers: {
