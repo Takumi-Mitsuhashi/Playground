@@ -14,7 +14,7 @@ app.use(cors({
     
     origin: [
         "http://localhost:5173",
-        "https://playground-rho-green.vercel.app"
+        "https://playground-zeta-ecru-37.vercel.app/"
     ],
     credentials: true,
 }));
